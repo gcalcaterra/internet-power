@@ -49,12 +49,12 @@ public class ApiExample {
      *
      * @throws GeneralSecurityException, IOException, GoogleJsonResponseException
      */
-    public static String youtubeSearch(String keyword) throws GeneralSecurityException, IOException, GoogleJsonResponseException {
+    public static SearchListResponse youtubeSearch(String keyword) throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
         YouTube.Search.List request = youtubeService.search().list("snippet");
         SearchListResponse response = request.setKey(DEVELOPER_KEY).setMaxResults(25L).setQ(keyword).execute();
         System.out.println(response);
-        return response.toString();
+        return response;
     }
 }
